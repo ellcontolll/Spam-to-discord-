@@ -1,0 +1,20 @@
+name: Discord 99 Messages
+
+on:
+  workflow_dispatch:
+
+jobs:
+  send-messages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send 99 messages to Discord
+        run: |
+          WEBHOOK_URL="https://discord.com/api/webhooks/1322383866190757990/LFeChvpzkTc455GWtMvCyVlQ1rSExqHpSOsLPuVCzROjc6WTvLWG2l51pCyBtn_KcttJ"
+          for i in $(seq 1 99); do
+            curl -H "Content-Type: application/json" \
+                 -X POST \
+                 -d "{\"content\": \"Salam dari ellcontol | Kontol keylogger #$i\"}" \
+                 "$WEBHOOK_URL"
+            sleep 1
+          done
+          
