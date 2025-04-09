@@ -1,20 +1,40 @@
-name: Discord 99 Messages
+name: Send 99 messages to discord
 
 on:
   workflow_dispatch:
 
 jobs:
-  send-messages:
+  send-rich-embed-messages:
     runs-on: ubuntu-latest
     steps:
-      - name: Send 99 messages to Discord
+      - name: prosess....
         run: |
-          WEBHOOK_URL="https://discord.com/api/webhooks/1322383866190757990/LFeChvpzkTc455GWtMvCyVlQ1rSExqHpSOsLPuVCzROjc6WTvLWG2l51pCyBtn_KcttJ"
-          for i in $(seq 1 99); do
+          WEBHOOK_URL="https://discord.com/api/webhooks/1349002316883296312/92NqclFtGIoctxGhZLpTICTRZZRpWOPXsRAQ3VvJxt48P2kdPEb6s5rrVYhzTd0GvGdJ"
+
+          for i in $(seq 1 9); do
+            TIMESTAMP=$(date -Iseconds)
+
             curl -H "Content-Type: application/json" \
                  -X POST \
-                 -d "{\"content\": \"Salam dari ellcontol | Kontol keylogger #$i\"}" \
+                 -d "$(jq -n \
+                   --arg title "KONTOLL KEYLOGGER" \
+                   --arg author_name "ellcontol" \
+                   --arg author_icon "https://cdn.discordapp.com/attachments/1273911625690382370/1358754599342706888/2ceca8b8-fdf0-4c39-8960-834cc74a7c07-3.webp?ex=67f6f894&is=67f5a714&hm=7d7658c5766b75375ad814dcd8f75a6ba6326e84981bf7a8524a9a9924d26afd&" \
+                   --arg desc " **Voice sini ANJ** @everyone " \
+                   --arg url "https://discord.gg/f6e9hT44YV" \
+                   --arg image_url "https://cdn.discordapp.com/attachments/1273911625690382370/1358754675163136202/c75996f5-8eb0-4223-a9bf-c618ac408eb3.png?ex=67f6f8a7&is=67f5a727&hm=7375d6e16332ae342dfee982dd4b78b3d5821fbeff5830012b3ecb4c41930312&" \
+                   --arg timestamp "$TIMESTAMP" \
+                   '{embeds: [{
+                      title: $title,
+                      author: { name: $author_name, icon_url: $author_icon },
+                      description: $desc,
+                      url: $url,
+                      image: { url: $image_url },
+                      timestamp: $timestamp,
+                      color: 15844367
+                   }]}' \
+                 )" \
                  "$WEBHOOK_URL"
+
             sleep 1
           done
-          
