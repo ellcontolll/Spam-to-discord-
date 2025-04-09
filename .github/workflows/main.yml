@@ -9,16 +9,16 @@ jobs:
     steps:
       - name: prosess....
         run: |
-          WEBHOOK_URL="https://discord.com/api/webhooks/1349002316883296312/92NqclFtGIoctxGhZLpTICTRZZRpWOPXsRAQ3VvJxt48P2kdPEb6s5rrVYhzTd0GvGdJ"
+          WEBHOOK_URL="https://discord.com/api/webhooks/1322383866190757990/LFeChvpzkTc455GWtMvCyVlQ1rSExqHpSOsLPuVCzROjc6WTvLWG2l51pCyBtn_KcttJ"
 
-          for i in $(seq 1 9); do
+          for i in $(seq 1 99); do
             TIMESTAMP=$(date -Iseconds)
 
             curl -H "Content-Type: application/json" \
                  -X POST \
                  -d "$(jq -n \
-                   --arg title "KONTOLL KEYLOGGER" \
-                   --arg author_name "ellcontol" \
+                   --arg title "# KONTOLL KEYLOGGER" \
+                   --arg author_name "**ellcontol**" \
                    --arg author_icon "https://cdn.discordapp.com/attachments/1273911625690382370/1358754599342706888/2ceca8b8-fdf0-4c39-8960-834cc74a7c07-3.webp?ex=67f6f894&is=67f5a714&hm=7d7658c5766b75375ad814dcd8f75a6ba6326e84981bf7a8524a9a9924d26afd&" \
                    --arg desc " **Voice sini ANJ** @everyone " \
                    --arg url "https://discord.gg/f6e9hT44YV" \
